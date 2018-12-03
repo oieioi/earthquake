@@ -197,7 +197,7 @@ Earthquake.init do
   HELP
 
   command :mentions do
-    puts_items twitter.mentions(:include_entities => :true)
+    puts_items twitter.mentions(:include_entities => :true, tweet_mode: 'extended')
   end
 
   help :mentions, "show mentions timeline"
@@ -220,12 +220,12 @@ Earthquake.init do
 
   # :recent jugyo
   command %r|^:recent\s+@?([^\/\s]+)$|, :as => :recent do |m|
-    puts_items twitter.user_timeline(:screen_name => m[1])
+    puts_items twitter.user_timeline(:screen_name => m[1], tweet_mode: 'extended')
   end
 
   # :recent yugui/ruby-committers
   command %r|^:recent\s+([^\s]+)\/([^\s]+)$|, :as => :recent do |m|
-    puts_items twitter.list_statuses(m[1], m[2])
+    puts_items twitter.list_statuses(m[1], m[2], tweet_mode: 'extended')
   end
 
   help :recent, "show recent tweets", <<-HELP
