@@ -1,5 +1,5 @@
 # Based on the Fedora image
-FROM ruby:2.4.2
+FROM ruby:2.7.1
 
 RUN apt-get update
 RUN apt-get install -y libssl-dev git locales locales-all
